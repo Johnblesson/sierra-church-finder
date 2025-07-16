@@ -1,0 +1,25 @@
+{
+  "name": "sierra-church-finder",
+  "version": "1.0.0",
+  "description": "A sierra leone based web application you can find all the churches nearby.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johnblesson/sierra-church-finder.git"
+  },
+  "author": "John Blesson Rowe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Johnblesson/sierra-church-finder/issues"
+  },
+  "homepage": "https://github.com/Johnblesson/sierra-church-finder#readme",
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.4"
+  }
+}
