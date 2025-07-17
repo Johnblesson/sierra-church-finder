@@ -38,6 +38,10 @@ import {
     toggle2FA 
 } 
 from '../controllers/2FA.js'
+<<<<<<< HEAD
+=======
+
+>>>>>>> b10b6f4d571725e09260b87b90bef7ec81e036ac
 import ensureAuthenticated from "../middlewares/auth.js";
 import { isAdmin } from "../middlewares/isAdmin.js";
 import { checkSudoMiddleware } from "../middlewares/sudo.js";
@@ -115,7 +119,13 @@ router.get("/sudo-only", getSudoOnly)
 router.get("/admin-only", getAdminOnly)
 
 // Route to handle goBack
+<<<<<<< HEAD
 router.get('/go-back', goBack);
 
 export default router;
 
+=======
+router.get('/go-back', goBack)
+
+export default router;
+>>>>>>> b10b6f4d571725e09260b87b90bef7ec81e036ac
