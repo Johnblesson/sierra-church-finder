@@ -94,8 +94,7 @@ io.on('connection', (socket) => {
   });
 });
 
-//Use Routes
-// 
+//Use Routes 
 app.use(authRoutes); // Use authRoutes
 // app.use(dashboardRoutes); // Use dashboardRoutes
 // app.use(newMemberRoute); // Use newMemberRoute

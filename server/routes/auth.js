@@ -52,9 +52,9 @@ router.get('/all-users', ensureAuthenticated, isAdmin, getAllUsers)
 router.get('/all-admins', ensureAuthenticated, isAdmin, onlyAdmins)
 router.get("/active-sessions", ensureAuthenticated, isAdmin, activeUserSessions)
 router.get("/edit-user/:id", ensureAuthenticated, isAdmin, edituser);
-router.patch("/edit-user/:id", ensureAuthenticated, isAdmin, checkOverseerMiddleware, updateUser)
-router.delete("/delete-user/:id", ensureAuthenticated, isAdmin, checkOverseerMiddleware, deleteUser)
-router.get("/delete-user/:id", ensureAuthenticated, isAdmin, checkOverseerMiddleware, deleteUser)
+router.patch("/edit-user/:id", ensureAuthenticated, isAdmin, updateUser)
+router.delete("/delete-user/:id", ensureAuthenticated, isAdmin, deleteUser)
+router.get("/delete-user/:id", ensureAuthenticated, isAdmin, deleteUser)
 router.get("/update-password/:id", ensureAuthenticated, viewChangePwdPage)
 router.patch("/update-password/:id", ensureAuthenticated, changePassword)
 
