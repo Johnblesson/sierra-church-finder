@@ -2,7 +2,6 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import multer from "multer";
 import helmet from "helmet"
 import ejs from "ejs";
 import path from "path"; 
@@ -15,16 +14,10 @@ import methodOverride from 'method-override';
 import passport from './server/passport/passport-config.js';
 import connectDB from './server/database/connection.js';
 import authRoutes from "./server/routes/auth.js";
-import dashboardRoutes from "./server/routes/dashboard.js";
-import newMemberRoute from "./server/routes/newMemberRoutes.js";
-import membersRoutes from "./server/routes/membersRoutes.js";
-import attendanceRoute from "./server/routes/attendanceRoute.js";
-import ipAddressRoutes from "./server/routes/ipaddress.js";
-import accountsRoutes from "./server/routes/accounts.js";
-import tithesRoutes from "./server/routes/tithesRoutes.js";
+// import dashboardRoutes from "./server/routes/dashboard.js";
+// import newMemberRoute from "./server/routes/newMemberRoutes.js";
+// import ipAddressRoutes from "./server/routes/ipaddress.js";
 import communityRoutes from "./server/routes/community.js";
-import broadcastRoutes from "./server/routes/broadcast.js"
-import expenseRoutes from "./server/routes/expense.js"; // Uncomment if you have a expense route
 import http from "http";
 import compression from "compression";
 import { Server } from "socket.io";
@@ -104,16 +97,11 @@ io.on('connection', (socket) => {
 //Use Routes
 // 
 app.use(authRoutes); // Use authRoutes
-app.use(dashboardRoutes); // Use dashboardRoutes
-app.use(newMemberRoute); // Use newMemberRoute
-app.use(membersRoutes); // Use membersRoutes
+// app.use(dashboardRoutes); // Use dashboardRoutes
+// app.use(newMemberRoute); // Use newMemberRoute
+// app.use(membersRoutes); // Use membersRoutes
 app.use('/community', communityRoutes); // Use communityRoutes
-app.use(attendanceRoute); // Use attendanceRoute
-app.use(ipAddressRoutes); // Use ipAddressRoutes
-app.use(accountsRoutes); // Use accountsRoutes
-app.use(expenseRoutes); // Use expenseRoutes
-app.use(broadcastRoutes); // Use broadcastRoutes
-app.use(tithesRoutes); // Use tithesRoutes
+// app.use(ipAddressRoutes); // Use ipAddressRoutes
 
 // Set up the server to listen on port 8080 for production.
 const PORT = process.env.PORT || 8080;
