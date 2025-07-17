@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "A sierra leone based web application you can find all the churches nearby.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js",
+    "start": "server.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +19,11 @@
   },
   "homepage": "https://github.com/Johnblesson/sierra-church-finder#readme",
   "dependencies": {
+    "axios": "^1.10.0",
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
     "compression": "^1.8.0",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "country-list": "^2.3.0",
@@ -32,9 +36,12 @@
     "jsonwebtoken": "^9.0.2",
     "method-override": "^3.0.0",
     "mongoose": "^8.16.4",
+    "node-cache": "^5.1.2",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "pm2": "^6.0.8",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.1",
     "speakeasy": "^2.0.0",
     "useragent": "^2.3.0"
   },
