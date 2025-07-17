@@ -165,57 +165,6 @@ export const updateChurch = async (req, res) => {
   }
 };
 
-
-
-
-// Controller function to get all members with pagination
-export const pastorate = async (req, res) => {
-  try {
-    const page = parseInt(req.query.page) || 1;  // Default to page 1
-    const limit = parseInt(req.query.limit) || 10; // Default to 10 members per page
-
-    // Calculate the number of items to skip (for pagination)
-    const skip = (page - 1) * limit;
-
-    // Fetch the members for the current page, with limit and skip
-    const members = await Membership.find({
-      department: 'Pastorate'
-    }).skip(skip).limit(limit);
-
-    // Get the total count of members for pagination control
-    const totalMembers = await Membership.countDocuments();
-
-    // Calculate the total number of pages
-    const totalPages = Math.ceil(totalMembers / limit);
-
-    const user = req.isAuthenticated() ? req.user : null;
-    const role = user ? user.role : null; // Get user role if user is authenticated
-
-     // Fetch user data from the session or request object
-     const sudo = user && user.sudo ? user.sudo : false;
-     const accountant = user && user.accountant ? user.accountant : false;
-     const overseer = user && user.overseer ? user.overseer : false;
-
-    // Render the EJS template with the members and pagination info
-    res.render('all-membership', {
-      members,
-      currentPage: page,
-      totalPages,
-      limit,
-      sudo,
-      accountant,
-      overseer,
-      user,
-      role,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
-};
-
-
-
 // Get all Churches for adminonly
 export const getAllChurchForAdminOnly = async (req, res) => {
   try {
@@ -247,9 +196,6 @@ export const getAllChurchForAdminOnly = async (req, res) => {
   }
 };
 
-
-
-
 // View church by id
 export const viewChurch = async (req, res) => {
   try {
@@ -263,57 +209,5 @@ export const viewChurch = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-  }
-};
-
-
-
-
-// to delete
-// Convert visitin-member to member
-export const convertToMembership = async (req, res) => {
-  try {
-    const newMemberId = req.params.id;
-    const newMember = await NewMember.findById(newMemberId);
-
-    if (!newMember) {
-      return res.status(404).send("New member not found.");
-    }
-
-    // Build membership data from newMember
-    const membershipData = {
-      firstname: newMember.firstname,
-      middlename: newMember.middlename,
-      lastname: newMember.lastname,
-      gender: newMember.gender,
-      maritalstatus: newMember.maritalstatus || "single", // default if missing
-      phone: newMember.phone,
-      address: newMember.address,
-      address2: newMember.address2,
-      department: "",
-      ministry: "",
-      position: "",
-      children: 0,
-      createdBy: newMember.createdBy,
-      role: newMember.role,
-      status: "Active", // Set as active upon conversion
-      comments: newMember.comments
-    };
-
-    // Save to Membership model
-    const member = new Membership(membershipData);
-    await member.save();
-
-    // Update status of the original newMember (do NOT delete)
-    newMember.status = "member";
-    await newMember.save(); // Save updated status
-
-    // Optional: delete the newMember record after conversion
-    // await NewMember.findByIdAndDelete(newMemberId);
-
-    res.redirect('/all-membership'); // redirect to members page (change as needed)
-  } catch (err) {
-    console.error("Conversion error:", err);
-    res.status(500).send("Server error during conversion.");
   }
 };
