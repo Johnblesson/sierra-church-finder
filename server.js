@@ -97,7 +97,7 @@ io.on('connection', (socket) => {
 //Use Routes 
 app.use(authRoutes); // Use authRoutes
 // app.use(dashboardRoutes); // Use dashboardRoutes
-// app.use(newMemberRoute); // Use newMemberRoute
+
 // app.use(membersRoutes); // Use membersRoutes
 app.use('/community', communityRoutes); // Use communityRoutes
 // app.use(ipAddressRoutes); // Use ipAddressRoutes
